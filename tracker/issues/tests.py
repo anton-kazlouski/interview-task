@@ -19,12 +19,14 @@ class IssueTestCase(TestCase):
 			summary='Testing issue update',
 			description='Test should update issue successfully',
 			type='TASK',
+			status=Issue.Status.OPEN
 		)
 
 		response = self.client.put('/issues/1/', {
 			'summary': issue.summary,
 			'description': 'Updated description',
-			'type': issue.type
+			'type': issue.type,
+			'status': issue.status,
 		},
 			content_type='application/json'
 		)
